@@ -1,8 +1,8 @@
 'use strict';
 
-const serchFields = document.querySelectorAll('form input');
+const searchFields = document.querySelectorAll('form input');
 
-for (const field of serchFields) {
+for (const field of searchFields) {
   const placeholderName = field.name;
   // console.log(placeholderName)
   let inputId = field.id;
