@@ -1,27 +1,28 @@
 'use strict';
 
+const serchFields = document.querySelectorAll('form input');
 
-const serchFields = document.getElementsByClassName('field');
+for (const field of serchFields) {
+  const placeholderName = field.name;
+  // console.log(placeholderName)
+  let inputId = field.id;
 
-for (const oneFild of serchFields) {
-  const input = oneFild.querySelector('input');
-  let placeholderName = input.name;
-  let inputId = input.id;
-
-  placeholderName = placeholderName.toLocaleLowerCase();
-
-  placeholderName =
+  const uPlaceholderName =
     placeholderName.charAt(0).toUpperCase() + placeholderName.slice(1);
-  input.placeholder = placeholderName;
+
+  // console.log(uPlaceholderName)
+  field.placeholder = uPlaceholderName;
 
   const newLabel = document.createElement('label');
 
-  oneFild.prepend(newLabel);
-  newLabel.textContent = placeholderName;
+  field.before(newLabel);
+  newLabel.textContent = uPlaceholderName;
   newLabel.classList.add('field-label');
 
   if (!inputId) {
-    inputId = input.name + 'suffix';
+    inputId = field.name + 'suffix';
+    field.id = inputId;
   }
+
   newLabel.setAttribute('for', inputId);
 }
